@@ -16,21 +16,21 @@ from tavily_tool import tavily_search
 from flight_tool import search_flights
 from dotenv import load_dotenv
 
-load_dotenv(
-
-llm = ChatGroq(
-    model="openai/gpt-oss-20b",
-    api_key=st.secrets["GROQ_API_KEY"]
+load_dotenv(".env")
+try:
+    groq_key = st.secrets["groq_api_key"]
+except Exception:
+    groq_key = os.getenv("groq_api_key")
 
 llm = ChatGroq(
     model="openai/gpt-oss-20b",
     api_key=groq_key
 )
-
 try:
     DATABASE_url = st.secrets["DATABASE_url"]
 except Exception:
     DATABASE_url = os.getenv("DATABASE_url")
+    print(DATABASE_url)
 class TravelState(TypedDict):
     messages: Annotated[list[AnyMessage], operator.add]
     user_query: str
@@ -107,37 +107,22 @@ graph.add_edge("itineary_agent", "final_agent")
 graph.add_edge("final_agent", END)
 
 if __name__ == "__main__":
-    with PyMySQLSaver.from_conn_string(DATABASE_url) as checkpointer:
-        checkpointer.setup()
-        app = graph.compile(checkpointer=checkpointer)
+    app = graph.compile()
 
-        config = {
-            "configurable": {
-                "thread_id": "user_vishnu"
-            }
-        }
-        
-        user_input = input("Enter travel request: ")
-        current_state = app.get_state(config)
-        
-        if current_state.values:
-            inputs = {
-                "messages": [HumanMessage(content=user_input)],
-                "user_query": user_input
-            }
-        else:
-            inputs = {
-                "messages": [HumanMessage(content=user_input)],
-                "user_query": user_input,
-                "flight_results": "",
-                "hotel_results": "",
-                "itinerary": "",
-                "llm_calls": 0
-            }
-            
-        result = app.invoke(inputs, config=config)
-        
-        print("\n FINAL RESPONSE:\n")
-        for msg in result["messages"]:
-            print(f"{type(msg).__name__}: {msg.content}")
+    user_input = input("Enter travel request: ")
 
+    inputs = {
+        "messages": [HumanMessage(content=user_input)],
+        "user_query": user_input,
+        "flight_results": "",
+        "hotel_results": "",
+        "itinerary": "",
+        "llm_calls": 0
+    }
+
+    result = app.invoke(inputs)
+
+    print("\nFINAL RESPONSE:\n")
+
+    for msg in result["messages"]:
+        print(f"{type(msg).__name__}: {msg.content}")
