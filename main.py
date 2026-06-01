@@ -1,4 +1,5 @@
 import os
+import streamlit as st
 from typing import TypedDict, Annotated
 import operator
 from langgraph.graph import StateGraph, START, END
@@ -19,9 +20,11 @@ load_dotenv()
 
 llm = ChatGroq(
     model="openai/gpt-oss-20b"
+    api_key=st.secrets["GROQ_API_KEY"]
+
 )
 
-DATABASE_url = os.getenv("DATABASE_url")
+DATABASE_url = st.secrets["DATABASE_url"]
 
 class TravelState(TypedDict):
     messages: Annotated[list[AnyMessage], operator.add]

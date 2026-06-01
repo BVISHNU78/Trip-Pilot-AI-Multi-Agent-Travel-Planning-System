@@ -1,8 +1,8 @@
 import os
 import requests
-from dotenv import load_dotenv
-load_dotenv()
-api_key=os.getenv("AVIATIONSTACK_API")
+import streamlit as st
+import streamlit as st
+api_key = st.secrets["AVIATIONSTACK_API"]
 
 def search_flights(query):
     url="https://api.aviationstack.com/v1/flights"
