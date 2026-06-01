@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import os
 from typing import TypedDict, Annotated
 import operator
@@ -33,7 +32,7 @@ class TravelState(TypedDict):
     llm_calls: int
 
 def flight_agent(state: TravelState):
-    query = state["user_query"]
+    query = f"Flights for {state['user_query']}"
     flight_data = search_flights(query)
     return {
         "flight_results": flight_data,
