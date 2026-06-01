@@ -375,6 +375,181 @@ Benefits:
 
 ---
 
+
+# ☁️ Cloud Deployment & Infrastructure
+
+## 🌐 Live Application
+
+**Live Demo:** https://multi-agent-travel-planning-system.streamlit.app/
+
+---
+
+## 💸 Fully Free-Tier Cloud Deployment
+
+Trip Pilot AI is designed and deployed entirely using free-tier cloud services, demonstrating how modern AI applications can be built without paid infrastructure during development, experimentation, and portfolio projects.
+
+### Cloud Stack
+
+| Component        | Service                   | Tier                |
+| ---------------- | ------------------------- | ------------------- |
+| Frontend Hosting | Streamlit Community Cloud | Free                |
+| LLM Provider     | Groq Cloud                | Free Tier           |
+| AI Model         | GPT-OSS-20B               | Free via Groq       |
+| Agent Framework  | LangGraph                 | Open Source         |
+| LLM Framework    | LangChain                 | Open Source         |
+| Database         | TiDB Cloud (AWS)          | Free Tier           |
+| Flight Data      | AviationStack API         | Free Developer Tier |
+| Travel Search    | Tavily Search             | Free Developer Tier |
+| Backend Runtime  | Python                    | Open Source         |
+
+---
+
+## 🏗️ Cloud Architecture
+
+User
+
+↓
+
+Streamlit Community Cloud
+
+↓
+
+LangGraph Multi-Agent Workflow
+
+├── Flight Agent
+
+├── Hotel Agent
+
+├── Itinerary Agent
+
+└── Final Response Agent
+
+↓
+
+Groq Cloud (GPT-OSS-20B)
+
+↓
+
+TiDB Cloud (AWS)
+
+↓
+
+External APIs
+
+├── AviationStack
+
+└── Tavily Search
+
+---
+
+## 🤖 AI Infrastructure
+
+### LLM Provider
+
+Groq Cloud
+
+### Model
+
+GPT-OSS-20B
+
+The model powers all travel-planning agents and handles:
+
+* Travel recommendations
+* Flight analysis
+* Hotel suggestions
+* Itinerary generation
+* Final response synthesis
+* Context-aware conversations
+
+---
+
+## 💾 Persistent Memory & Database
+
+The deployed application uses **TiDB Cloud (AWS)** together with **LangGraph Checkpointing** to maintain persistent conversation memory.
+
+### Benefits
+
+* Stores user sessions
+* Maintains conversation history
+* Supports multi-turn travel planning
+* Enables context-aware follow-up questions
+* Preserves agent workflow state
+* Supports long-running planning sessions
+
+---
+
+## 🔒 Secure Cloud Configuration
+
+All sensitive credentials are managed securely using cloud-based secret management.
+
+Examples include:
+
+* Groq API Keys
+* TiDB Cloud Credentials
+* AviationStack API Keys
+* Tavily Search API Keys
+* Additional Travel Service Credentials
+
+No secrets are stored directly in the GitHub repository.
+
+---
+
+## ✅ Deployment Highlights
+
+* Fully Cloud Hosted
+* Multi-Agent AI Architecture
+* GPT-OSS-20B Powered Reasoning
+* Persistent Conversation Memory
+* Real-Time Flight Information
+* AI-Generated Travel Itineraries
+* Free-Tier Infrastructure
+* Publicly Accessible Deployment
+* Scalable Cloud Database
+* Context-Aware Travel Planning
+
+---
+Cost Efficiency
+
+This project is designed to operate using free-tier services:
+
+Service	Tier
+Streamlit Community Cloud	Free
+Groq Cloud	Free Tier
+TiDB Cloud	Free Tier
+Tavily Search	Free Developer Tier
+AviationStack	Free Developer Tier
+LangGraph	Open Source
+LangChain	Open Source
+
+This demonstrates how production-style AI systems can be built, deployed, and showcased without requiring paid cloud infrastructure.
+
+🎯 Project Goal
+
+Trip Pilot AI showcases the integration of:
+
+Multi-Agent Systems
+Large Language Models
+Cloud Databases
+Persistent Memory
+Real-Time Travel Intelligence
+Modern AI Application Deployment
+
+while leveraging free-tier cloud services and open-source technologies.
+## 🚀 Why This Project Matters
+
+Trip Pilot AI demonstrates how advanced AI systems can combine:
+
+* Multi-Agent Workflows
+* Large Language Models
+* Persistent Memory
+* Real-Time Travel Intelligence
+* Cloud-Native Architecture
+* Open-Source Frameworks
+
+The entire platform is deployed using free-tier cloud services, making it accessible for learning, experimentation, hackathons, and portfolio demonstrations while maintaining production-style architecture.
+
+> **Note:** Free-tier limits may vary depending on the policies of Groq Cloud, TiDB Cloud, Streamlit Community Cloud, Tavily Search, and AviationStack.
+
 ## 🔮 Future Enhancements
 
 - Flight booking integration
