@@ -1,8 +1,13 @@
 from tavily import TavilyClient
 import os
 import streamlit as st
+try:
+    tavily_key = st.secrets["TAVILY_API_KEY"]
+except Exception:
+    tavily_key = os.getenv("TAVILY_API_KEY")
+
 client = TavilyClient(
-    api_key=st.secrets["TAVILY_API_KEY"]
+    api_key=tavily_key
 )
 def tavily_search(query):
     response=client.search(query=query,max_results=5)

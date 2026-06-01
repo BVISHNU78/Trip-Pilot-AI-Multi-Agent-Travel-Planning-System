@@ -16,16 +16,21 @@ from tavily_tool import tavily_search
 from flight_tool import search_flights
 from dotenv import load_dotenv
 
-load_dotenv()
+load_dotenv(
 
 llm = ChatGroq(
     model="openai/gpt-oss-20b",
     api_key=st.secrets["GROQ_API_KEY"]
 
+llm = ChatGroq(
+    model="openai/gpt-oss-20b",
+    api_key=groq_key
 )
 
-DATABASE_url = st.secrets["DATABASE_url"]
-
+try:
+    DATABASE_url = st.secrets["DATABASE_url"]
+except Exception:
+    DATABASE_url = os.getenv("DATABASE_url")
 class TravelState(TypedDict):
     messages: Annotated[list[AnyMessage], operator.add]
     user_query: str
