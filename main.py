@@ -11,8 +11,8 @@ from langchain_core.messages import (
     SystemMessage,
 )
 from langchain_groq import ChatGroq
-from tools.tavily_tool import tavily_search
-from tools.flight_tool import search_flights
+from tavily_tool import tavily_search
+from flight_tool import search_flights
 from dotenv import load_dotenv
 
 load_dotenv()
