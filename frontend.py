@@ -1,11 +1,9 @@
-<<<<<<< HEAD
 import streamlit as st
 from langchain_core.messages import HumanMessage
 import streamlit.components.v1 as components
-# =========================================================
-# LOAD main.py WITHOUT RUNNING __main__
-# =========================================================
-
+import streamlit as st
+from langchain_core.messages import HumanMessage
+import streamlit.components.v1 as components
 namespace = {}
 
 with open("main.py", "r", encoding="utf-8") as f:
@@ -23,9 +21,7 @@ graph = namespace["graph"]
 app = graph.compile()
 
 
-# =========================================================
-# PAGE CONFIG
-# =========================================================
+
 
 st.set_page_config(
     page_title="AI Travel Planner",
@@ -34,9 +30,6 @@ st.set_page_config(
 )
 
 
-# =========================================================
-# CSS
-# =========================================================
 
 st.markdown("""
 <style>
@@ -103,9 +96,6 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 
-# =========================================================
-# DESTINATION IMAGE FUNCTION
-# =========================================================
 
 def get_destination_data(query):
 
@@ -185,17 +175,9 @@ def get_destination_data(query):
     }
 
 
-# =========================================================
-# SESSION STATE
-# =========================================================
-
 if "messages" not in st.session_state:
     st.session_state.messages = []
 
-
-# =========================================================
-# CURRENT QUERY
-# =========================================================
 
 query_text = ""
 
@@ -205,9 +187,7 @@ if st.session_state.messages:
 image_data = get_destination_data(query_text)
 
 
-# =========================================================
-# HERO SECTION
-# =========================================================
+
 
 components.html(
     f"""
@@ -253,9 +233,7 @@ components.html(
     height=420
 )
 
-# =========================================================
-# DESTINATION GALLERY
-# =========================================================
+
 
 st.subheader("🌍 Destination Gallery")
 
@@ -268,9 +246,6 @@ for col, image in zip(cols, image_data["gallery"]):
         st.image(image, width=400)
 
 
-# =========================================================
-# CHAT HISTORY
-# =========================================================
 
 for message in st.session_state.messages:
 
@@ -279,18 +254,13 @@ for message in st.session_state.messages:
         st.markdown(message["content"])
 
 
-# =========================================================
-# CHAT INPUT
-# =========================================================
 
 user_query = st.chat_input(
     "Plan your dream vacation..."
 )
 
 
-# =========================================================
-# RUN GRAPH
-# =========================================================
+
 
 if user_query:
 
@@ -338,5 +308,5 @@ if user_query:
                 })
 
             except Exception as e:
-                  st.error(f"Error: {str(e)}")
+                 st.error(f"Error: {str(e)}")
 
