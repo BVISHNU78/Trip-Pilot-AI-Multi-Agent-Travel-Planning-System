@@ -1,32 +1,40 @@
 import os
 import requests
-import streamlit as st
-import streamlit as st
-api_key = st.secrets["AVIATIONSTACK_API"]
+from dotenv import load_dotenv
+load_dotenv()
+api_key = os.getenv("AVIATIONSTACK_API")
 
-def search_flights(query):
-    url="https://api.aviationstack.com/v1/flights"
-    params={
-        "access_key":api_key,
-        "limit":5
-    }
-    response=requests.get(url,params=params)
-    data=response.json()
-    flights=[]
-    if "data" in data:
-        for flight in data["data"][:5]:
-            airline =  flight.get("airline",{}).get("name","Unknown")
-            departure = flight.get("departure",{}).get("airport","Unknown")
-            arrival = flight.get( "arrival",{}).get("airport","Unkown")
-            status=flight.get("flight_status","Unknown")
 
-        flights.append(
-            f"""
+def search_flights(dep_iata, arr_iata):
+    """Live flights on a route from Aviationstack.
 
-Airline:{airline}
-Departure:{departure}
-Arrival:{arrival}
-Status:{status}
-"""
-        )
-    return "\n".join(flights)
+    Returns {"flights": [dict, ...], "error": str | None}. The flight dicts are
+    passed straight to the renderer, so every flight shown to the user comes
+    from this API response and nothing else.
+    """
+    if not dep_iata or not arr_iata:
+        return {"flights": [], "error": "origin or destination airport unknown"}
+
+    params = {"access_key": api_key, "dep_iata": dep_iata, "arr_iata": arr_iata, "limit": 5}
+    try:
+        data = requests.get("https://api.aviationstack.com/v1/flights", params=params, timeout=15).json()
+    except Exception as e:
+        return {"flights": [], "error": str(e)}
+
+    if "error" in data:
+        err = data["error"]
+        return {"flights": [], "error": err.get("message", str(err)) if isinstance(err, dict) else str(err)}
+
+    flights = []
+    for f in data.get("data") or []:
+        dep = f.get("departure") or {}
+        arr = f.get("arrival") or {}
+        flights.append({
+            "flight": (f.get("flight") or {}).get("iata") or "-",
+            "airline": (f.get("airline") or {}).get("name") or "-",
+            "from": dep.get("iata") or dep_iata,
+            "to": arr.get("iata") or arr_iata,
+            "scheduled": dep.get("scheduled") or "-",
+            "status": f.get("flight_status") or "-",
+        })
+    return {"flights": flights[:5], "error": None}
