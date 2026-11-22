@@ -1,4 +1,4 @@
-# ✈️ Trip Pilot AI — Multi-Agent Travel Planner
+ ✈️ Trip Pilot AI — Multi-Agent Travel Planner
 
 **Live demo:** https://multi-agent-travel-planning-system.streamlit.app/
 
@@ -316,5 +316,14 @@ Contributions are welcome:
 ---
 
 ## ⭐ Support
+
+If you found this project useful, consider giving it a ⭐ on GitHub.
+
+
+---
+
+
+
+
 
 If you found this project useful, consider giving it a ⭐ on GitHub.
