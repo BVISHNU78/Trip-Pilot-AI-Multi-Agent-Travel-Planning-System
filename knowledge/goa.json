@@ -1,0 +1,65 @@
+{
+  "name": "Goa",
+  "country": "India",
+  "aliases": ["goa", "panaji", "panjim", "calangute", "baga", "candolim", "anjuna", "vagator", "colva", "benaulim", "cavelossim", "palolem", "agonda", "margao", "madgaon", "vasco"],
+  "_note": "Starter knowledge base. Distances are approximate road distances between area hubs. Prices are INDICATIVE PLACEHOLDERS - replace them with figures you have researched before relying on the budget.",
+
+  "airports": [
+    {"iata": "GOI", "name": "Dabolim Airport (near Vasco da Gama)", "region": "south", "source": "https://en.wikipedia.org/wiki/Dabolim_Airport"},
+    {"iata": "GOX", "name": "Manohar International Airport (Mopa)", "region": "north", "source": "https://en.wikipedia.org/wiki/Manohar_International_Airport"}
+  ],
+
+  "access": [
+    {"mode": "train", "text": "Konkan Railway trains stop at Thivim (north), Karmali (near Panaji/Old Goa) and Madgaon (south).", "source": "https://en.wikipedia.org/wiki/Konkan_Railway"},
+    {"mode": "flight", "text": "Two airports: Dabolim (GOI) in the south-centre and Manohar International (GOX) at Mopa in the far north. Pick the one closest to your base.", "source": "https://en.wikipedia.org/wiki/Manohar_International_Airport"}
+  ],
+
+  "regions": {
+    "north":     {"label": "North Goa (Calangute / Candolim / Anjuna)"},
+    "central":   {"label": "Central Goa (Panaji / Old Goa / Ponda)"},
+    "south":     {"label": "South Goa (Colva / Benaulim / Cavelossim)"},
+    "far_south": {"label": "Far South Goa (Palolem / Agonda / Canacona)"},
+    "east":      {"label": "East Goa (Mollem / Dudhsagar)"}
+  },
+
+  "region_distances_km": {
+    "north|central": 16,
+    "north|south": 50,
+    "north|far_south": 85,
+    "north|east": 75,
+    "central|south": 35,
+    "central|far_south": 70,
+    "central|east": 60,
+    "south|far_south": 38,
+    "south|east": 60,
+    "far_south|east": 80
+  },
+
+  "places": [
+    {"id": "basilica_bom_jesus", "name": "Basilica of Bom Jesus (Old Goa)", "region": "central", "type": "heritage", "fee_inr": 0, "source": "https://en.wikipedia.org/wiki/Basilica_of_Bom_Jesus"},
+    {"id": "se_cathedral", "name": "Se Cathedral (Old Goa)", "region": "central", "type": "heritage", "fee_inr": 0, "source": "https://en.wikipedia.org/wiki/Se_Cathedral"},
+    {"id": "fontainhas", "name": "Fontainhas Latin Quarter (Panaji)", "region": "central", "type": "walk", "fee_inr": 0, "source": "https://en.wikipedia.org/wiki/Fontainhas"},
+    {"id": "dona_paula", "name": "Dona Paula viewpoint", "region": "central", "type": "viewpoint", "fee_inr": 0, "source": "https://en.wikipedia.org/wiki/Dona_Paula"},
+    {"id": "mangueshi_temple", "name": "Shri Mangueshi Temple (Ponda)", "region": "central", "type": "heritage", "fee_inr": 0, "source": "https://en.wikipedia.org/wiki/Mangueshi_Temple"},
+    {"id": "mandovi_cruise", "name": "Mandovi river evening cruise (Panaji)", "region": "central", "type": "activity", "fee_inr": null, "source": null},
+    {"id": "fort_aguada", "name": "Fort Aguada (Candolim)", "region": "north", "type": "heritage", "fee_inr": null, "source": "https://en.wikipedia.org/wiki/Fort_Aguada"},
+    {"id": "chapora_fort", "name": "Chapora Fort (Vagator)", "region": "north", "type": "heritage", "fee_inr": 0, "source": "https://en.wikipedia.org/wiki/Chapora_Fort"},
+    {"id": "calangute_beach", "name": "Calangute Beach", "region": "north", "type": "beach", "fee_inr": 0, "source": "https://en.wikipedia.org/wiki/Calangute"},
+    {"id": "anjuna", "name": "Anjuna beach & flea market (market is weekly and seasonal - check the day)", "region": "north", "type": "beach", "fee_inr": 0, "source": "https://en.wikipedia.org/wiki/Anjuna"},
+    {"id": "colva_beach", "name": "Colva Beach", "region": "south", "type": "beach", "fee_inr": 0, "source": "https://en.wikipedia.org/wiki/Colva"},
+    {"id": "cabo_de_rama", "name": "Cabo de Rama Fort", "region": "far_south", "type": "heritage", "fee_inr": 0, "source": "https://en.wikipedia.org/wiki/Cabo_de_Rama"},
+    {"id": "palolem_beach", "name": "Palolem Beach", "region": "far_south", "type": "beach", "fee_inr": 0, "source": "https://en.wikipedia.org/wiki/Palolem"},
+    {"id": "dudhsagar_falls", "name": "Dudhsagar Falls (access can close in heavy monsoon - check before going)", "region": "east", "type": "nature", "fee_inr": null, "source": "https://en.wikipedia.org/wiki/Dudhsagar_Falls"}
+  ],
+
+  "prices_inr": {
+    "_source": "Indicative placeholders - verify",
+    "room_per_night":      {"budget": 1500, "mid": 4500, "luxury": 12000},
+    "food_per_person_day": {"budget": 600,  "mid": 1500, "luxury": 3500},
+    "local_transport_day": {"budget": 500,  "mid": 2500, "luxury": 4000}
+  },
+
+  "tips": [
+    {"text": "North Goa is the busiest area; the south is quieter. Picking one base close to your activities saves hours of driving.", "source": null}
+  ]
+}
